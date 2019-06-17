@@ -72,22 +72,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
+    <IncludePath>D:\CPP_Games\Asteroids\Asteroids\structs;D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
+    <IncludePath>D:\CPP_Games\Asteroids\Asteroids\structs;D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
+    <IncludePath>D:\CPP_Games\Asteroids\Asteroids\structs;D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
+    <IncludePath>D:\CPP_Games\Asteroids\Asteroids\structs;D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -156,24 +156,30 @@
   <ItemGroup>
     <ClCompile Include="src\asteroid.cpp" />
     <ClCompile Include="src\bullet.cpp" />
-    <ClCompile Include="src\control.cpp" />
+    <ClCompile Include="src\enemy_ship.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\player_ship.cpp" />
+    <ClCompile Include="src\show_remain_lives.cpp" />
+    <ClCompile Include="src\show_score.cpp" />
     <ClCompile Include="src\window.cpp" />
+    <ClCompile Include="_Interfaces\_game_obj.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data\big_asteroid_data.hpp" />
     <ClInclude Include="data\bullet_data.hpp" />
     <ClInclude Include="data\big_enemy_ship_data.hpp" />
     <ClInclude Include="data\medium_asteroid_data.hpp" />
-    <ClInclude Include="data\misc_data.hpp" />
+    <ClInclude Include="data\show_lives_data.hpp" />
     <ClInclude Include="data\player_ship_data.hpp" />
     <ClInclude Include="data\small_asteroid_data.hpp" />
     <ClInclude Include="data\small_enemy_ship_data.hpp" />
     <ClInclude Include="headers\asteroid.hpp" />
     <ClInclude Include="headers\game_over.hpp" />
-    <ClInclude Include="headers\set_up.hpp" />
+    <ClInclude Include="structs\color_obj.hpp" />
+    <ClInclude Include="structs\msg.hpp" />
+    <ClInclude Include="structs\pointd.hpp" />
     <ClInclude Include="headers\bullet.hpp" />
-    <ClInclude Include="headers\game_control.hpp" />
+    <ClInclude Include="data\game_control.hpp" />
     <ClInclude Include="headers\enemy_ship.hpp" />
     <ClInclude Include="headers\random_num.hpp" />
     <ClInclude Include="headers\show_remain_lives.hpp" />

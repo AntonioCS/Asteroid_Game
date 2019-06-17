@@ -2,12 +2,12 @@
 
 #include <algorithm> // std::fill_n
 
-constexpr auto SCALE_MEDIUM_ROCK = 0.75;
+constexpr auto SCALE_MEDIUM_ROCK = 0.85;
 constexpr auto MEDIUM_ROCK_VERTEX_COUNT = 12;
 constexpr auto MEDIUM_ROCK_TYPE_COUNT = 4;
 constexpr auto MEDIUM_ROCK_COUNT = 24;
 constexpr auto MEDIUM_ROCK = 'm';
-constexpr auto MEDIUM_ROCK_SPEED = 2.0;
+constexpr auto MEDIUM_ROCK_SPEED = 1.5;
 
 SDL_Point medium_rocks[MEDIUM_ROCK_COUNT][MEDIUM_ROCK_VERTEX_COUNT];
 SDL_Point medium_rocks_ref[MEDIUM_ROCK_TYPE_COUNT][MEDIUM_ROCK_VERTEX_COUNT] = {

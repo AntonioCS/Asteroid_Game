@@ -1,3 +1,5 @@
+#pragma once
+
 #include "_message.hpp"
 
 class game_over : public message {

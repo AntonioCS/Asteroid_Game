@@ -10,14 +10,13 @@ public:
 		const std::string &font_path,
 		int font_size,
 		const std::string &show_win,
-		const SDL_Color &color)
+		const SDL_Color &msg_color)
 	{
 		TTF_Font *font = TTF_OpenFont(font_path.c_str(), font_size);
-		std::cout << "font: " << font << "\n";
 		if (!font) {
 			std::cerr << "Failed to load font.\n";
 		}
-		auto win_surface = TTF_RenderText_Solid(font, show_win.c_str(), color);
+		auto win_surface = TTF_RenderText_Solid(font, show_win.c_str(), msg_color);
 
 		if (!win_surface) {
 			std::cerr << "Failed to create score surface.\n";

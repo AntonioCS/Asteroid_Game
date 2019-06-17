@@ -5,7 +5,11 @@
     <ClCompile Include="src\window.cpp" />
     <ClCompile Include="src\asteroid.cpp" />
     <ClCompile Include="src\bullet.cpp" />
-    <ClCompile Include="src\control.cpp" />
+    <ClCompile Include="_Interfaces\_game_obj.cpp" />
+    <ClCompile Include="src\player_ship.cpp" />
+    <ClCompile Include="src\enemy_ship.cpp" />
+    <ClCompile Include="src\show_remain_lives.cpp" />
+    <ClCompile Include="src\show_score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\window.hpp" />
@@ -17,7 +21,6 @@
     <ClInclude Include="data\bullet_data.hpp" />
     <ClInclude Include="data\big_asteroid_data.hpp" />
     <ClInclude Include="data\medium_asteroid_data.hpp" />
-    <ClInclude Include="data\misc_data.hpp" />
     <ClInclude Include="data\small_asteroid_data.hpp" />
     <ClInclude Include="superceded\old_main.hpp" />
     <ClInclude Include="headers\show_score.hpp" />
@@ -27,10 +30,13 @@
     <ClInclude Include="data\big_enemy_ship_data.hpp" />
     <ClInclude Include="headers\random_num.hpp" />
     <ClInclude Include="headers\show_remain_lives.hpp" />
-    <ClInclude Include="headers\set_up.hpp" />
-    <ClInclude Include="headers\game_control.hpp" />
     <ClInclude Include="headers\game_over.hpp" />
     <ClInclude Include="headers\show_message.hpp" />
+    <ClInclude Include="structs\pointd.hpp" />
+    <ClInclude Include="structs\msg.hpp" />
+    <ClInclude Include="data\show_lives_data.hpp" />
+    <ClInclude Include="structs\color_obj.hpp" />
+    <ClInclude Include="data\game_control.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="data\Vector Battle.ttf" />

@@ -2,12 +2,12 @@
 
 #include <algorithm> // std::fill_n
 
-constexpr auto SCALE_SMALL_ROCK = 0.75;
+constexpr auto SCALE_SMALL_ROCK = 0.9;
 constexpr auto SMALL_ROCK_VERTEX_COUNT = 12;
 constexpr auto SMALL_ROCK_TYPE_COUNT = 4;
 constexpr auto SMALL_ROCK_COUNT = 48;
 constexpr auto SMALL_ROCK = 's';
-constexpr auto SMALL_ROCK_SPEED = 3.0;
+constexpr auto SMALL_ROCK_SPEED = 2.0;
 
 SDL_Point small_rocks[SMALL_ROCK_COUNT][SMALL_ROCK_VERTEX_COUNT];
 SDL_Point small_rocks_ref[SMALL_ROCK_TYPE_COUNT][SMALL_ROCK_VERTEX_COUNT] = {

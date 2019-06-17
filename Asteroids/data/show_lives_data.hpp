@@ -1,16 +1,16 @@
 #pragma once
 
-constexpr auto TOTAL_ROCKS = BIG_ROCK_COUNT + MEDIUM_ROCK_COUNT + SMALL_ROCK_COUNT;
+/*constexpr auto TOTAL_ROCKS = 12 + 24 + 48;
 constexpr auto ROCK_VERTEX_COUNT = 12;
 
 SDL_Point rocks[TOTAL_ROCKS][ROCK_VERTEX_COUNT];
 
-constexpr auto ROCK_TYPE_COUNT = 4;
+constexpr auto ROCK_TYPE_COUNT = 4;*/
 
 constexpr auto SCALE_SHOW_LIVES = 1.0;
-constexpr auto SHOW_LIVES_VERTEX_COUNT = 4;
-constexpr auto SHOW_LIVES_COUNT = 10;
-constexpr auto START_LIVES_NUM = 3;
+constexpr int SHOW_LIVES_VERTEX_COUNT = 4;
+constexpr int SHOW_LIVES_COUNT = 10;
+constexpr int START_LIVES_NUM = 3;
 constexpr SDL_Point GAME_OVER_MSG = { 340, 280 };
 
 SDL_Point show_lives[SHOW_LIVES_COUNT][SHOW_LIVES_VERTEX_COUNT];
