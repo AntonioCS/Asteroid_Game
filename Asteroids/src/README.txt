@@ -17,4 +17,4 @@ Things still to do (in no particular order):
 1. add sound
 2. review program layout
 3. add restart new game
-4. varying line thicknesses
+4. varying draw line thicknesses
