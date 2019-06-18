@@ -261,12 +261,6 @@ int main(int argc, char *argv[]) {
 				player.ship.new_game();
 				game.game_reset();
 				all_asteroids_active.reset(original);
-	/*			for (auto i = 0; i < 12; ++i) {
-					for (auto j = 0; j < 12; ++j) {
-						all_asteroids_active.list[i].vertices[j].x = original[i * 12 + j].x;
-						all_asteroids_active.list[i].vertices[j].y = original[i * 12 + j].y;
-					}
-				}*/
 				for (int i = 0; i < 84; ++i) all_asteroids_active.list[i].on_off = false;
 				for(int i=0; i < all_asteroids_active.list[0].start_count; ++i) all_asteroids_active.list[i].on_off = true;
 				player.ship.reset_pos();
@@ -303,15 +297,7 @@ int main(int argc, char *argv[]) {
 					++game.level;
 					game.new_level_chk = true;
 					game.level = std::min(all_asteroids_active.list[0].num_of_big_rock, game.level);
-				//**************************
-					for (auto i = 0; i < 12; ++i) {
-						for (auto j = 0; j < 12; ++j) {
-							all_asteroids_active.list[i].vertices[j].x = original[i * 12 + j].x;
-							all_asteroids_active.list[i].vertices[j].y = original[i * 12 + j].y;
-						}
-					}
-
-					// *******************************
+					all_asteroids_active.reset(original);
 					for (int i = 0; i < game.level + all_asteroids_active.list[0].start_count; ++i) {
 						all_asteroids_active.list[i].on_off = true;
 					}

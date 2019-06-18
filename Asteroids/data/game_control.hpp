@@ -26,7 +26,7 @@ public:
 	void game_reset() {
 		new_level_chk = true;
 		level = 0;
-		//game_over = false;
+		game_over = false;
 	}
 };
 
