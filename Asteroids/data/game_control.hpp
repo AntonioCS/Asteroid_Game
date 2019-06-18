@@ -21,6 +21,13 @@ public:
 	Uint32 big_ship_start_time = level_start_time;
 	Uint32 new_level_delay = 2 * 1000;
 	bool new_level_chk{true};
+	bool game_over{ false };
+
+	void game_reset() {
+		new_level_chk = true;
+		level = 0;
+		//game_over = false;
+	}
 };
 
 

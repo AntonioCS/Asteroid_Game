@@ -28,6 +28,8 @@ public:
 	all_asteroids();
 	~all_asteroids() = default;
 
+	void reset(const std::vector<SDL_Point> &original);
+
 	template<typename T, std::size_t type_num, std::size_t vertex_num>
 	void scale_game_object_data(T(&object_ref_data)[type_num][vertex_num], const double scale) {
 		for (int i = 0; i < type_num; ++i) {

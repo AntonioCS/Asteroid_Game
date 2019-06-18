@@ -55,3 +55,10 @@ enemy_bullet_list::enemy_bullet_list()
 		list.push_back(bullet);
 	}
 };
+
+void player_bullet_list::all_bullets_off() {
+	for (int i = 0; i < list.size(); ++i) {
+		list[i].position = BULLET_OFF_POSITION;
+		list[i].on_off = false;
+	}
+}

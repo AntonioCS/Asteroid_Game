@@ -7,6 +7,7 @@ constexpr auto SHIP_THRUST = 0.05;
 constexpr auto SHIP_VELOCITY_LIMIT = 4.0;
 constexpr auto SHIP_ROTATION_SPEED = 0.04;
 constexpr auto SHIP_MASS = 10;
+constexpr auto MAX_LIVES_NUM = 10;
 
 constexpr auto SCALE_PLAYER_SHIP = 0.5;
 constexpr auto PLAYER_SHIP_VERTEX_COUNT = 5;

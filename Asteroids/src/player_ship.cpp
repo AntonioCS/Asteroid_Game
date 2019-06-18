@@ -14,6 +14,7 @@ SDL_Point player_ship::explode_vertices[2 * (PLAYER_SHIP_VERTEX_COUNT) - 2];
 double player_ship::drag{ SHIP_DRAG }; //1.005
 int player_ship::score{ 0 };
 int player_ship::lives{ START_LIVES_NUM };
+int const player_ship::max_lives{ MAX_LIVES_NUM };
 bool player_ship::show_thrust{ false };
 bool player_ship::reset{ false };
 int player_ship::extra_ship{ SCORE_FOR_EXTRA_SHIP };
@@ -101,7 +102,7 @@ void player_ship::reset_pos() {
 	av.velocity = 0;
 	ship_orientation = 0.0;
 	on_off = true;
-	std::cout << "Reset Ship\n";
+	//std::cout << "Reset Ship\n";
 }
 
 
@@ -179,4 +180,9 @@ if (score > extra_ship) {
 	extra_ship += 10000;
 }
 lives = std::min(10, lives);
+}
+
+void player_ship::new_game() {
+	score = 0;
+	lives = START_LIVES_NUM;
 }

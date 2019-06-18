@@ -39,12 +39,14 @@ public:
 	void split_apart();
 	virtual void draw() const override;
 	void earn_life();
+	void new_game();
 
 	static double drag; 
 	double ship_orientation;
 	static bool show_thrust;
 	static int score;
 	static int lives;
+	static const int max_lives;
 	static bool reset;
 	static int extra_ship;
 	

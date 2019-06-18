@@ -74,6 +74,15 @@ all_asteroids::all_asteroids() {
 	}
 };
 
+void all_asteroids::reset(const std::vector<SDL_Point> &original) {
+	for (auto i = 0; i < 12; ++i) {
+		for (auto j = 0; j < 12; ++j) {
+			list[i].vertices[j].x = original[i * 12 + j].x;
+			list[i].vertices[j].y = original[i * 12 + j].y;
+		}
+	}
+}
+
 
 
 

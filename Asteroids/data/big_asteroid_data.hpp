@@ -9,7 +9,7 @@ constexpr auto BIG_ROCK_START_COUNT = 4;
 
 SDL_Point rocks[TOTAL_ROCKS][ROCK_VERTEX_COUNT];
 
-constexpr auto SCALE_BIG_ROCK = 0.75;
+constexpr auto SCALE_BIG_ROCK = 0.6;
 constexpr auto BIG_ROCK_VERTEX_COUNT = 12;
 constexpr auto BIG_ROCK_TYPE_COUNT = 4;
 

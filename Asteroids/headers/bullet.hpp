@@ -37,6 +37,7 @@ class player_bullet_list {
 public:
 	player_bullet_list();
 	~player_bullet_list() = default;
+	void all_bullets_off();
 	std::vector<bullet> list;
 };
 
@@ -46,3 +47,4 @@ public:
 	~enemy_bullet_list() = default;
 	std::vector<bullet> list;
 };
+

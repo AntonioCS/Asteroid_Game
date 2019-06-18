@@ -27,8 +27,21 @@ int main(int argc, char *argv[]) {
 	window asteroid_window("Asteroids", window_X, window_Y);
 	
 	all_asteroids all_asteroids_active; // build a dynmoc array to show all rocks during the game
-	all_asteroids all_asteroids_original; // build a ref array of start locations of rocks for level start
+	std::vector<SDL_Point> original;
+	
+	for (auto i = 0; i < 84; ++i) {
+		for (auto j = 0; j < 12; ++j) {
+			original.push_back({ all_asteroids_active.list[i].vertices[j].x, all_asteroids_active.list[i].vertices[j].y });
+			//std::cout << "i " << i << " j " << j << " point " << all_asteroids_active.list[i].vertices[j].x << "," << all_asteroids_active.list[i].vertices[j].y << "\n";
+		}
+	}
+	
 
+	std::cout << &all_asteroids_active.list[0].vertices[0].x << ", " << &all_asteroids_active.list[0].vertices[0].y << "\n";
+	std::cout << &original[0].x << ", " << &original[0].y << "\n";
+	std::cout << all_asteroids_active.list[83].vertices[11].x << ", " << all_asteroids_active.list[83].vertices[11].y << "\n";
+	std::cout << original[12*83].x << ", " << original[12*83].y << "\n";
+	
 	player_bullet_list player_bullets;
 
 	enemy_bullet_list enemy_bullets;
@@ -45,6 +58,7 @@ int main(int argc, char *argv[]) {
 
 	text_message title_message(window::renderer, msg.font, msg.game_message_font_size, "©1979 ATARI INC", player_color);
 	text_message game_over(window::renderer, msg.font, msg.score_font_size, "GAME OVER", player_color);
+	text_message restart(window::renderer, msg.font, msg.score_font_size, "Press 'R' to restart a new game", player_color);
 	text_message level_num(window::renderer, msg.font, msg.score_font_size, "NEW LEVEL", player_color);
 
 	score score(window::renderer, msg.font, msg.score_font_size, std::to_string(player.ship.score), player_color);
@@ -57,17 +71,17 @@ int main(int argc, char *argv[]) {
 	while (!asteroid_window.is_closed()) {
 
 		// Make sure Game run at the correct screen refresh Rate, asumed 60Hz for game speed
- 		game.start_time = SDL_GetTicks();
+		game.start_time = SDL_GetTicks();
 		if (game.start_time > game.end_time + game.screen_refresh_rate) {
 			game.end_time = game.start_time;
 
-		// Clear keyboard buffer and get new keyboard sample
+			// Clear keyboard buffer and get new keyboard sample
 			SDL_PumpEvents();
 			asteroid_window.poll_all_events(game.keystate);
 
 			player.ship.earn_life();
 
-		// Display score and Atari title
+			// Display score and Atari title
 			score.display(window_X / 10, window_Y / 10, window::renderer, std::to_string(player.ship.score), msg.score_font_size);
 			title_message.display(window_X / 2.5, window_Y / 1.2, window::renderer);
 
@@ -95,7 +109,7 @@ int main(int argc, char *argv[]) {
 							// if a medium asteroid is hit then spllit it into two small ones
 							else if (all_asteroids_active.list[i].type == 'm') {
 								all_asteroids_active.list[all_asteroids_active.list[0].num_of_big_rock + i * 2 + 1].asteroid_split(1, all_asteroids_active.list[i].obj_centre, i);
-								all_asteroids_active.list[all_asteroids_active.list[0].num_of_big_rock  + i * 2].asteroid_split(0, all_asteroids_active.list[i].obj_centre, i);
+								all_asteroids_active.list[all_asteroids_active.list[0].num_of_big_rock + i * 2].asteroid_split(0, all_asteroids_active.list[i].obj_centre, i);
 							}
 							//otherwise if a small asteroid is hit then blow it up
 							else if (all_asteroids_active.list[i].type == 's') {
@@ -108,60 +122,64 @@ int main(int argc, char *argv[]) {
 					if (all_asteroids_active.list[i].proxmity_to_centre_of_screen()) game.asteroid_too_close_to_reset_position = true;
 
 					// has an asteroid hit the player ship?
-					for (int j = 0; j < player.ship.num_pts-3; ++j) { // check for ship and not rear jet triangle
+					for (int j = 0; j < player.ship.num_pts - 3; ++j) { // check for ship and not rear jet triangle
 						if (all_asteroids_active.list[i].collider({ player.ship.vertices[j].x, player.ship.vertices[j].y }) && player.ship.on_off) {
 							player.ship.got_hit();
+							player_bullets.all_bullets_off();
 						}
 					}
 				}
-			// if the asteroid has been hit then keep explosion going until finished
+				// if the asteroid has been hit then keep explosion going until finished
 				all_asteroids_active.list[i].obj_explosion();
 			}
 
 			// if the ship has been destroyed, the ships explosion has finished and there's no asteroid really close to the centre of the screen then the player ship can be reset
-			if(!player.ship.on_off && !game.asteroid_too_close_to_reset_position && !player.ship.explode) { player.ship.reset_pos(); }
-			
+			if (!player.ship.on_off && !game.asteroid_too_close_to_reset_position && !player.ship.explode) { player.ship.reset_pos(); }
+
 			// check whether the big saucer has hit the player
-			for (int j = 0; j < player.ship.num_pts-3; ++j) {
+			for (int j = 0; j < player.ship.num_pts - 3; ++j) {
 				if (big_enemy.ship.collider({ player.ship.vertices[j].x, player.ship.vertices[j].y }) && player.ship.on_off) {
-				//	std::cout <<"big saucer hit player ship\n";
+					//	std::cout <<"big saucer hit player ship\n";
 					big_enemy.ship.destroy_enemy_ship(game.start_time);
 					player.ship.got_hit();
+					player_bullets.all_bullets_off();
 				}
 			}
 
 			// check whether the small saucer has hit the player
 			for (int j = 0; j < player.ship.num_pts - 3; ++j) {
 				if (small_enemy.ship.collider({ player.ship.vertices[j].x, player.ship.vertices[j].y }) && player.ship.on_off) {
-				//	std::cout << "small saucer hit player ship\n";
+					//	std::cout << "small saucer hit player ship\n";
 					--player.ship.lives;
 					small_enemy.ship.destroy_enemy_ship(game.start_time);
 					player.ship.got_hit();
-					
+					player_bullets.all_bullets_off();
 				}
 			}
 
 			// check whether the small saucer has shot the player
 			for (int i = 0; i < enemy_bullets.list.size(); ++i) {
-				if (player.ship.collider({ static_cast <int>(enemy_bullets.list[i].position.x), static_cast <int>(enemy_bullets.list[i].position.y)}) && player.ship.on_off) {
-				//	std::cout << "small saucer shot player ship\n";
+				if (player.ship.collider({ static_cast <int>(enemy_bullets.list[i].position.x), static_cast <int>(enemy_bullets.list[i].position.y) }) && player.ship.on_off) {
+					//	std::cout << "small saucer shot player ship\n";
 					player.ship.got_hit();
+					player_bullets.all_bullets_off();
 				}
 			}
-		
+
 			// if the player has been hit then keep explosion going until finished 
 			if (player.ship.explode) player.ship.split_apart();
-
-			// Has the player lost his last life?
-			if (player.ship.lives < 1) {
-				game_over.display(window_X / 2,window_Y / 2, window::renderer);
-				player.ship.on_off = false;
-
-			}
 
 			if (player.ship.on_off) {
 				player.ship.move();
 				player.ship.draw();
+
+				// move player bullets if fired
+				std::for_each(player_bullets.list.begin(), player_bullets.list.end(), [](bullet &bullet) {
+					if (bullet.on_off) {
+						bullet.move();
+						bullet.draw();
+					}
+				});
 			}
 
 			// check timing interval and launch big saucer when required and then check for player bullet impacts as it flys around screen
@@ -170,7 +188,7 @@ int main(int argc, char *argv[]) {
 			}
 			if (big_enemy.ship.on_off) {
 				if (big_enemy.ship.check_enemy_ship_bullet_hit(player_bullets, game.start_time)) {
-				//	std::cout << "big saucer hit!\n";
+					//	std::cout << "big saucer hit!\n";
 					player.ship.score += big_enemy.ship.score;
 					big_enemy.ship.start_time = game.start_time;
 				};
@@ -186,7 +204,7 @@ int main(int argc, char *argv[]) {
 			}
 			if (small_enemy.ship.on_off) {
 				if (small_enemy.ship.check_enemy_ship_bullet_hit(player_bullets, game.start_time)) {
-				//	std::cout << "small saucer hit!\n";
+					//	std::cout << "small saucer hit!\n";
 					player.ship.score += small_enemy.ship.score;
 					std::for_each(enemy_bullets.list.begin(), enemy_bullets.list.end(), [](bullet &bullet) {
 						bullet.on_off = false;
@@ -201,7 +219,7 @@ int main(int argc, char *argv[]) {
 					if (bullet.on_off) {
 						bullet.move();
 						bullet.draw();
-					} 
+					}
 				});
 			}
 			// keep small saucer explosion going as required
@@ -216,25 +234,43 @@ int main(int argc, char *argv[]) {
 				});
 			}
 
-			// move player bullets if fired
-			std::for_each(player_bullets.list.begin(), player_bullets.list.end(), [](bullet &bullet) {
-				if (bullet.on_off) {
-					bullet.move();
-					bullet.draw();
-				}
-			});
-
 			// show remaining lives as triangles under score. reset remaining lives list to match number of lives of player ship and then draw each one
 			for (int i = 0; i < 10; ++i) {
 				remaining_lives.list[i].on_off = false;
 				if (i < player.ship.lives) { remaining_lives.list[i].on_off = true; }
 			}
+
 			std::for_each(remaining_lives.list.begin(), remaining_lives.list.end(), [](show_remain_lives &life) {
 				if (life.on_off) {
 					life.draw();
 				}
 			});
 
+			// Has the player lost his last life?
+			if (player.ship.lives < 1) {
+				game_over.display(window_X / 3, 2 * window_Y / 5, window::renderer);
+				restart.display(window_X / 4, 3 * window_Y / 5, window::renderer);
+				player.ship.on_off = false;
+				game.game_over = true;
+			}
+
+			// game over and restart the game if r is pressed 
+			if (game.game_over && game.keystate[SDL_SCANCODE_R]) {
+				small_enemy.ship.destroy_enemy_ship(game.start_time);
+				big_enemy.ship.destroy_enemy_ship(game.start_time);
+				player.ship.new_game();
+				game.game_reset();
+				all_asteroids_active.reset(original);
+	/*			for (auto i = 0; i < 12; ++i) {
+					for (auto j = 0; j < 12; ++j) {
+						all_asteroids_active.list[i].vertices[j].x = original[i * 12 + j].x;
+						all_asteroids_active.list[i].vertices[j].y = original[i * 12 + j].y;
+					}
+				}*/
+				for (int i = 0; i < 84; ++i) all_asteroids_active.list[i].on_off = false;
+				for(int i=0; i < all_asteroids_active.list[0].start_count; ++i) all_asteroids_active.list[i].on_off = true;
+				player.ship.reset_pos();
+			}
 			// if we're playing the game then sample ship controls and respond accordingly
 			if (player.ship.on_off) {
 				if (game.keystate[SDL_SCANCODE_LEFT]) { player.ship.rotate_left(); }
@@ -266,8 +302,16 @@ int main(int argc, char *argv[]) {
 				else {
 					++game.level;
 					game.new_level_chk = true;
-					all_asteroids_active = all_asteroids_original;
 					game.level = std::min(all_asteroids_active.list[0].num_of_big_rock, game.level);
+				//**************************
+					for (auto i = 0; i < 12; ++i) {
+						for (auto j = 0; j < 12; ++j) {
+							all_asteroids_active.list[i].vertices[j].x = original[i * 12 + j].x;
+							all_asteroids_active.list[i].vertices[j].y = original[i * 12 + j].y;
+						}
+					}
+
+					// *******************************
 					for (int i = 0; i < game.level + all_asteroids_active.list[0].start_count; ++i) {
 						all_asteroids_active.list[i].on_off = true;
 					}

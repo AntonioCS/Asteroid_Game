@@ -1,12 +1,5 @@
 #pragma once
 
-/*constexpr auto TOTAL_ROCKS = 12 + 24 + 48;
-constexpr auto ROCK_VERTEX_COUNT = 12;
-
-SDL_Point rocks[TOTAL_ROCKS][ROCK_VERTEX_COUNT];
-
-constexpr auto ROCK_TYPE_COUNT = 4;*/
-
 constexpr auto SCALE_SHOW_LIVES = 1.0;
 constexpr int SHOW_LIVES_VERTEX_COUNT = 4;
 constexpr int SHOW_LIVES_COUNT = 10;
