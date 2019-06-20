@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "pointd.hpp"
-#include <SDL_image.h>
 
 #include "window.hpp"
 

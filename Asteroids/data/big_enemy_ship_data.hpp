@@ -6,7 +6,7 @@ constexpr auto BIG_ENEMY_SHIP_TIMING = 10 * 1000; // 20 seconds
 
 constexpr auto BIG_ENEMY_SHIP_VERTEX_COUNT = 12;
 constexpr auto BIG_ENEMY_SHIP_SPEED = 1.5;
-constexpr auto BIG_ENEMY_SHIP_SCORE = 9000;
+constexpr auto BIG_ENEMY_SHIP_SCORE = 200;
 
 
 

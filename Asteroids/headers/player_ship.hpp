@@ -38,7 +38,7 @@ public:
 	void got_hit();
 	void split_apart();
 	virtual void draw() const override;
-	void earn_life();
+	bool earn_life();
 	void new_game();
 
 	static double drag; 

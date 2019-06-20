@@ -34,7 +34,7 @@ void asteroid::asteroid_split(const bool rock_ID, const pointd &original_rock_ce
 		}
 	}
 	on_off = true;
-	rock_ID ? av.angle = old_asteroid_angle + (PI / 2.0) * rand_nudge_angle() : av.angle = old_asteroid_angle - (PI / 2.0) * rand_nudge_angle();
+	rock_ID ? av.angle = old_asteroid_angle + (PI / 1.9) * rand_nudge_angle() : av.angle = old_asteroid_angle - (PI / 2.1) * rand_nudge_angle();
 	obj_explosion_set(original_rock_centre);
 }
 

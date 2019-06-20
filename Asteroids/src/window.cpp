@@ -1,9 +1,12 @@
 #include<iostream>
 #include<SDL_image.h>
 #include<SDL_ttf.h>
+#include <SDL_mixer.h>
 #include "window.hpp"
+#include "sounds.hpp"
 
 SDL_Renderer *window::renderer = nullptr;
+
 
 window::window(const std::string &_title, int _width, int _height) :
 	title{ _title },
@@ -17,28 +20,51 @@ window::~window()
 {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(asteroid_window);
+	renderer = nullptr;
+	asteroid_window = nullptr;
 	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
+	Mix_Quit();
 }
 
 bool window::init()
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-		std::cerr << "Failed to initialise SDL.\n";
+		std::cerr << "Failed to initialise SDL. " << SDL_GetError() << "\n";
 		return false;
 	}
+	else {std::cout << "SDL intialised\n";}
 
 	if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
-		std::cerr << "Failed to intialise SDL_image.\n";
+		std::cerr << "Failed to intialise SDL_image. " << IMG_GetError() << "\n";
 		return false;
 	}
-
+	else { std::cout << "SDL_image intialised\n"; }
+	
 	if (TTF_Init() == -1)
 	{
-		std::cerr << "Failed to intialise SDL_ttf.\n";
+		std::cerr << "Failed to intialise SDL_ttf " << TTF_GetError() << "\n";
 		return false;
 	}
+	else { std::cout << "SDL_ttf intialised\n"; }
+
+	//Initialize SDL audio
+	if (SDL_Init(SDL_INIT_AUDIO) != 0)
+	{
+		std::cerr << "Failed to intialise SDL_mixer. " << SDL_GetError() << "\n";
+		return false;
+	}
+	else { std::cout << "SDL_mixer intialised\n"; }
+
+	//Initialize SDL_mixer
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	{
+		std::cerr << "Failed to intialise Mix_OpenAudio.\n" << Mix_GetError() << "\n";
+		return false;
+	}
+	else std::cout << "mixer loaded ok \n";
+
 	asteroid_window = SDL_CreateWindow(
 		title.c_str(),
 		SDL_WINDOWPOS_CENTERED,
@@ -57,7 +83,6 @@ bool window::init()
 		std::cerr << "Failed to create renderer.\n";
 		return false;
 	}
-
 	return true;
 };
 

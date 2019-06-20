@@ -7,8 +7,6 @@
 #include "pointd.hpp"
 #include "color_obj.hpp"
 
-#include <SDL_image.h>
-
 #include "window.hpp"
 
 struct game_obj_velocity {
@@ -28,7 +26,7 @@ class game_obj
 public:
 	game_obj(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off);
 
-	~game_obj() = default;
+	~game_obj() = default; // double check with the experts whether i need to write deconstructor and how for mutiple asteroids in a vector
 
 private:
 	// has the obect moved off the screen, if so wrap around

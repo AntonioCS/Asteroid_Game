@@ -12,7 +12,7 @@ public:
 		const std::string &show_win,
 		const SDL_Color &msg_color)
 	{
-		TTF_Font *font = TTF_OpenFont(font_path.c_str(), font_size);
+		font = TTF_OpenFont(font_path.c_str(), font_size);
 		if (!font) {
 			std::cerr << "Failed to load font.\n";
 		}
@@ -28,5 +28,10 @@ public:
 		SDL_FreeSurface(win_surface);
 		return win_texture;
 	}
-	~message() = default;
+	~message() {
+		TTF_CloseFont(font);
+		font = nullptr;
+	};
+	
+	TTF_Font *font;
 };

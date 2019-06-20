@@ -73,21 +73,25 @@
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>D:\CPP_Games\Asteroids\Asteroids\sounds;D:\CPP_Games\Asteroids\Asteroids\structs;D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\C++_Libraries\SDL2-2.0.9\lib\x64;D:\C++_Libraries\SDL2_mixer-2.0.4\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>D:\CPP_Games\Asteroids\Asteroids\sounds;D:\CPP_Games\Asteroids\Asteroids\structs;D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\C++_Libraries\SDL2-2.0.9\lib\x64;D:\C++_Libraries\SDL2_mixer-2.0.4\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>D:\CPP_Games\Asteroids\Asteroids\sounds;D:\CPP_Games\Asteroids\Asteroids\structs;D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\C++_Libraries\SDL2-2.0.9\lib\x64;D:\C++_Libraries\SDL2_mixer-2.0.4\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\intermediates\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>D:\CPP_Games\Asteroids\Asteroids\sounds;D:\CPP_Games\Asteroids\Asteroids\structs;D:\CPP_Games\Asteroids\Asteroids\src;D:\CPP_Games\Asteroids\Asteroids\data;D:\CPP_Games\Asteroids\Asteroids\_Interfaces;D:\CPP_Games\Asteroids\Asteroids\headers;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\C++_Libraries\SDL2-2.0.9\lib\x64;D:\C++_Libraries\SDL2_mixer-2.0.4\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -95,11 +99,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\C++_Libraries\glm\glm;D:\C++_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\C++_Libraries\SDL2_mixer-2.0.4\include;D:\C++_Libraries\glm\glm;D:\C++_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\C++_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++_Libraries\SDL2_mixer-2.0.4\lib\x64;D:\C++_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -109,11 +113,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\C++_Libraries\glm\glm;D:\C++_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\C++_Libraries\SDL2_mixer-2.0.4\include;D:\C++_Libraries\glm\glm;D:\C++_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>D:\C++_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++_Libraries\SDL2_mixer-2.0.4\lib\x64;D:\C++_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -125,13 +129,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\C++_Libraries\glm\glm;D:\C++_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\C++_Libraries\SDL2_mixer-2.0.4\include;D:\C++_Libraries\glm\glm;D:\C++_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\C++_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++_Libraries\SDL2_mixer-2.0.4\lib\x64;D:\C++_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -143,13 +147,13 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\C++_Libraries\glm\glm;D:\C++_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\C++_Libraries\SDL2_mixer-2.0.4\include;D:\C++_Libraries\glm\glm;D:\C++_Libraries\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\C++_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++_Libraries\SDL2_mixer-2.0.4\lib\x64;D:\C++_Libraries\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -175,6 +179,7 @@
     <ClInclude Include="data\small_enemy_ship_data.hpp" />
     <ClInclude Include="headers\asteroid.hpp" />
     <ClInclude Include="headers\game_over.hpp" />
+    <ClInclude Include="headers\sounds.hpp" />
     <ClInclude Include="structs\color_obj.hpp" />
     <ClInclude Include="structs\msg.hpp" />
     <ClInclude Include="structs\pointd.hpp" />
@@ -197,6 +202,18 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="sounds\ship_explode.wav" />
+    <Media Include="sounds\ship_shoot.wav" />
+    <Media Include="sounds\explode_big_asteroid.wav" />
+    <Media Include="sounds\explode_medium_asteroid.wav" />
+    <Media Include="sounds\explode_small_asteroid.wav" />
+    <Media Include="sounds\game_heart_beat.wav" />
+    <Media Include="sounds\extra_ship.wav" />
+    <Media Include="sounds\saucer_big.wav" />
+    <Media Include="sounds\saucer_small.wav" />
+    <Media Include="sounds\ship_thrust.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

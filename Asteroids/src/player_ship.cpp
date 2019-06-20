@@ -174,12 +174,14 @@ ship_construct::ship_construct() {};
 player_ship ship_construct::ship(player_space_ship_ref, TOTAL_SHIP_VERTEX_COUNT, intial_position_ship, initial_velocity_ship, SCALE_PLAYER_SHIP);
 
 // Does the player get another ship
-void player_ship::earn_life(){
-if (score > extra_ship) {
+bool player_ship::earn_life(){
+	if (score > extra_ship) {
 	++lives;
 	extra_ship += 10000;
-}
-lives = std::min(10, lives);
+	lives = std::min(10, lives);
+	return true;
+	}
+	else return false;
 }
 
 void player_ship::new_game() {

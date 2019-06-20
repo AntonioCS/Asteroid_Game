@@ -2,6 +2,8 @@
 #include<string>
 #include<SDL.h>
 
+#include "sounds.hpp"
+
 constexpr auto window_X = 800;
 constexpr auto window_Y = 600;
 
@@ -13,8 +15,7 @@ public:
 	void x_close_chk(SDL_Event &event);
 	void clear() const;
 	int get_refresh_rate();
-	
-	
+		
 	inline bool is_closed() const { return closed; }
 
 private:

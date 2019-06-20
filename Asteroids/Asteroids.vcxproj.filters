@@ -37,6 +37,7 @@
     <ClInclude Include="data\show_lives_data.hpp" />
     <ClInclude Include="structs\color_obj.hpp" />
     <ClInclude Include="data\game_control.hpp" />
+    <ClInclude Include="headers\sounds.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="data\Vector Battle.ttf" />
@@ -44,5 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\README.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="sounds\explode_big_asteroid.wav" />
+    <Media Include="sounds\explode_medium_asteroid.wav" />
+    <Media Include="sounds\explode_small_asteroid.wav" />
+    <Media Include="sounds\game_heart_beat.wav" />
+    <Media Include="sounds\extra_ship.wav" />
+    <Media Include="sounds\saucer_big.wav" />
+    <Media Include="sounds\saucer_small.wav" />
+    <Media Include="sounds\ship_explode.wav" />
+    <Media Include="sounds\ship_shoot.wav" />
+    <Media Include="sounds\ship_thrust.wav" />
   </ItemGroup>
 </Project>

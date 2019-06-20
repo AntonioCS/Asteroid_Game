@@ -25,8 +25,8 @@ public:
 	static const int fire_border;
 
 private:
-	int x{ 0 };
-	int y{ 0 };
+	int x{ -100 };
+	int y{ -100 };
 	double const scale;
 };
 

@@ -5,7 +5,7 @@
 
 constexpr auto PI = 3.14159265359;
 
-int enemy_ship::delay = 200; // ENEMY_SHIP_FIRE_DELAY;
+int enemy_ship::delay = ENEMY_SHIP_FIRE_DELAY; 
 int const enemy_ship::fire_border{ SMALL_ENEMY_SHIP_FIRE_BORDER };
 
 enemy_ship::enemy_ship(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off, const int &_score, const double &_scale)

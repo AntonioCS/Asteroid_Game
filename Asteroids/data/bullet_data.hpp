@@ -8,7 +8,6 @@ constexpr auto PLAYER_BULLET_SPEED = 10.0;
 constexpr auto ENEMY_BULLET_SPEED = 3.0;
 
 constexpr auto ENEMY_FIRE_DELAY = 200;
-constexpr auto BULLET_POS_OFF_SCREEN = -200;
 
 constexpr auto BULLET_RANGE = 300;
 constexpr auto BULLET_HEIGHT = 4;
