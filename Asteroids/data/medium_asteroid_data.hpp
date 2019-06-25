@@ -25,10 +25,6 @@ SDL_Point medium_rocks_ref[MEDIUM_ROCK_TYPE_COUNT][MEDIUM_ROCK_VERTEX_COUNT] = {
 	}
 };
 
-/*SDL_Point intial_position_medium_rocks[MEDIUM_ROCK_COUNT] = {
-	 { 400, 300 }, { 200, 400 },  { 300, 300 }, { 500, 600 }, {500, 500}
-};*/
-
 SDL_Point intial_position_medium_rocks[MEDIUM_ROCK_COUNT] = {
 	 { 0, 0 }, { 0, 0 },  { 0, 0 }, { 0, 0 }, {0, 0}, {0,0},
 	 { 0, 0 }, { 0, 0 },  { 0, 0 }, { 0, 0 }, {0, 0}, {0,0},

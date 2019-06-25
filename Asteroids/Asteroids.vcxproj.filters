@@ -30,14 +30,14 @@
     <ClInclude Include="data\big_enemy_ship_data.hpp" />
     <ClInclude Include="headers\random_num.hpp" />
     <ClInclude Include="headers\show_remain_lives.hpp" />
-    <ClInclude Include="headers\game_over.hpp" />
     <ClInclude Include="headers\show_message.hpp" />
     <ClInclude Include="structs\pointd.hpp" />
     <ClInclude Include="structs\msg.hpp" />
     <ClInclude Include="data\show_lives_data.hpp" />
     <ClInclude Include="structs\color_obj.hpp" />
-    <ClInclude Include="data\game_control.hpp" />
     <ClInclude Include="headers\sounds.hpp" />
+    <ClInclude Include="headers\high_score.hpp" />
+    <ClInclude Include="headers\game_control.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="data\Vector Battle.ttf" />
@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\README.txt" />
+    <Text Include="data\10_top _high_scores_file.txt" />
+    <Text Include="data\10_top _names_file.txt" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="sounds\explode_big_asteroid.wav" />

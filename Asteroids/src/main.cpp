@@ -21,6 +21,7 @@
 #include "show_score.hpp"
 #include "show_message.hpp"
 #include "show_remain_lives.hpp"
+#include "high_score.hpp"
 
 int main(int argc, char *argv[]) {
 
@@ -33,15 +34,10 @@ int main(int argc, char *argv[]) {
 	for (auto i = 0; i < 84; ++i) {
 		for (auto j = 0; j < 12; ++j) {
 			original.push_back({ all_asteroids_active.list[i].vertices[j].x, all_asteroids_active.list[i].vertices[j].y });
-			//std::cout << "i " << i << " j " << j << " point " << all_asteroids_active.list[i].vertices[j].x << "," << all_asteroids_active.list[i].vertices[j].y << "\n";
 		}
 	}
-	
 
-/*	std::cout << &all_asteroids_active.list[0].vertices[0].x << ", " << &all_asteroids_active.list[0].vertices[0].y << "\n";
-	std::cout << &original[0].x << ", " << &original[0].y << "\n";
-	std::cout << all_asteroids_active.list[83].vertices[11].x << ", " << all_asteroids_active.list[83].vertices[11].y << "\n";
-	std::cout << original[12*83].x << ", " << original[12*83].y << "\n";*/
+	high_score high_score;
 
 	sounds sounds;
 	
@@ -63,15 +59,13 @@ int main(int argc, char *argv[]) {
 	text_message game_over(window::renderer, msg.font, msg.score_font_size, "GAME OVER", player_color);
 	text_message restart(window::renderer, msg.font, msg.score_font_size, "Press 'R' to restart a new game", player_color);
 	text_message level_num(window::renderer, msg.font, msg.score_font_size, "NEW LEVEL", player_color);
+	text_message high_score_title(window::renderer, msg.font, msg.score_font_size, "HIGH SCORES", player_color);
 
 	score score(window::renderer, msg.font, msg.score_font_size, std::to_string(player.ship.score), player_color);
 
 	control game;
 	
 	game.screen_refresh_rate = asteroid_window.get_refresh_rate(); // every xx of a second
-	int beat_count{ 0 };
-	int big_saucer_count{ 0 };
-	int small_saucer_count{ 0 };
 
 	// **** MAIN GAME LOOP ****
 	while (!asteroid_window.is_closed()) {
@@ -81,7 +75,7 @@ int main(int argc, char *argv[]) {
 		if (game.start_time > game.end_time + game.screen_refresh_rate) {
 			game.end_time = game.start_time;
 
-			beat_count > 50 ? Mix_PlayChannel(-1, sounds.game_heart_beat, 0), beat_count = 0 : ++beat_count;
+			sounds.beat_count > 50 ? Mix_PlayChannel(-1, sounds.game_heart_beat, 0), sounds.beat_count = 0 : ++sounds.beat_count;
 
 			// Clear keyboard buffer and get new keyboard sample
 			SDL_PumpEvents();
@@ -90,7 +84,7 @@ int main(int argc, char *argv[]) {
 			if (player.ship.earn_life()) Mix_PlayChannel(-1, sounds.extra_ship, 0);
 
 			// Display score and Atari title
-			score.display(window_X / 10, window_Y / 10, window::renderer, std::to_string(player.ship.score), msg.score_font_size);
+			score.display(window_X / 8, window_Y / 10, window::renderer, std::to_string(player.ship.score), msg.score_font_size);
 			title_message.display(window_X / 2.5, window_Y / 1.2, window::renderer);
 
 			game.asteroid_too_close_to_reset_position = false; // reset ateroid reposition flag
@@ -208,7 +202,7 @@ int main(int argc, char *argv[]) {
 					player.ship.score += big_enemy.ship.score;
 					big_enemy.ship.start_time = game.start_time;
 				};
-				big_saucer_count > 7 ? Mix_PlayChannel(-1, sounds.saucer_big, 0), big_saucer_count = 0 : ++big_saucer_count;
+				sounds.big_saucer_count > 7 ? Mix_PlayChannel(-1, sounds.saucer_big, 0), sounds.big_saucer_count = 0 : ++sounds.big_saucer_count;
 				big_enemy.ship.move();
 				big_enemy.ship.draw();
 			}
@@ -228,7 +222,7 @@ int main(int argc, char *argv[]) {
 						bullet.on_off = false;
 					});
 				};
-				small_saucer_count > 5 ? Mix_PlayChannel(-1, sounds.saucer_small, 0), small_saucer_count = 0 : ++small_saucer_count;
+				sounds.small_saucer_count > 5 ? Mix_PlayChannel(-1, sounds.saucer_small, 0), sounds.small_saucer_count = 0 : ++sounds.small_saucer_count;
 				small_enemy.ship.move();
 				small_enemy.ship.draw();
 				// move small saucer bullets 
@@ -270,9 +264,9 @@ int main(int argc, char *argv[]) {
 				restart.display(window_X / 4, 3 * window_Y / 5, window::renderer);
 				player.ship.on_off = false;
 				game.game_over = true;
-				beat_count = 0;
-				big_saucer_count = 0;
-				small_saucer_count = 0;
+				sounds.beat_count = 0;
+				sounds.big_saucer_count = 0;
+				sounds.small_saucer_count = 0;
 			}
 
 			// game over and restart the game if r is pressed 

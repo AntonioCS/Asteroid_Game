@@ -31,10 +31,6 @@ void poll_all_events(window &window, const Uint8 *keystate) {
 int main(int argc, char *argv[]) {
 
 	window asteroid_window("Asteroids", window_X, window_Y);
-	//	int font_size{ 80 }, game_msg_font_size{ 24 };
-	//	SDL_Color line_color = { 200,200, 200, 255 };
-
-
 
 	std::vector<asteroid> big_asteroid_list = initialise_big_rocks();
 	std::vector<asteroid> medium_asteroid_list = initialise_medium_rocks();
@@ -51,7 +47,7 @@ int main(int argc, char *argv[]) {
 	player_ship ship(player_space_ship, PLAYER_SHIP_VERTEX_COUNT, intial_position_ship, initial_velocity_ship);
 
 	//	score score2(window::renderer, "D:/CPP_Games/Asteroids/Asteroids/data/bit5x5.ttf", font_size, std::to_string(ball.score_p2), player_color);
-	const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+	const Uint8 *keystate = SDL_GetKeyboardState(nullptr);
 	//Current time start time
 	bool space_key_release{ false }, big_rock_just_split{ false }, med_rock_just_split = false;;
 	int c1{ 0 }; // debug variable

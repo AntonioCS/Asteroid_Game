@@ -23,7 +23,7 @@ window::~window()
 	renderer = nullptr;
 	asteroid_window = nullptr;
 	TTF_Quit();
-	IMG_Quit();
+//	IMG_Quit();
 	SDL_Quit();
 	Mix_Quit();
 }
@@ -36,11 +36,11 @@ bool window::init()
 	}
 	else {std::cout << "SDL intialised\n";}
 
-	if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
+/*	if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG) {
 		std::cerr << "Failed to intialise SDL_image. " << IMG_GetError() << "\n";
 		return false;
 	}
-	else { std::cout << "SDL_image intialised\n"; }
+	else { std::cout << "SDL_image intialised\n"; }*/
 	
 	if (TTF_Init() == -1)
 	{

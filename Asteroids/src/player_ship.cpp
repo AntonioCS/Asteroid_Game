@@ -165,7 +165,7 @@ void player_ship::split_apart() {
 }
 
 void player_ship::draw() const {
-	SDL_SetRenderDrawColor(window::renderer, 200, 200, 200, 200);
+	SDL_SetRenderDrawColor(window::renderer, 200, 200, 200, 255);
 	SDL_RenderDrawLines(window::renderer, vertices, num_pts - 3);
 	if (show_thrust) SDL_RenderDrawLines(window::renderer, vertices + 5, 3); // jet thrust triangle
 }

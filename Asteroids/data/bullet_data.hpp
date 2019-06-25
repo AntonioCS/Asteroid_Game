@@ -9,7 +9,7 @@ constexpr auto ENEMY_BULLET_SPEED = 3.0;
 
 constexpr auto ENEMY_FIRE_DELAY = 200;
 
-constexpr auto BULLET_RANGE = 300;
+constexpr auto BULLET_RANGE = window_Y / 2;
 constexpr auto BULLET_HEIGHT = 4;
 constexpr auto BULLET_WIDTH = 4;
 constexpr pointd BULLET_OFF_POSITION = { -100, -100 };

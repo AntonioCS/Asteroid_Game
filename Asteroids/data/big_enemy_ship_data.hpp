@@ -14,7 +14,7 @@ SDL_Point big_enemy_ship_ref[BIG_ENEMY_SHIP_VERTEX_COUNT] = {
 		{-20, 0},{-10, -10},{-7, -20},{7, -20},{10,-10},{20,0},{10, 10},{-10, 10},{-20,0}, {20,0}, {10, -10}, {-10,-10}
 };
 
-SDL_Point intial_position_big_enemy_ship = { 0, 100 };
+SDL_Point intial_position_big_enemy_ship = { 0, window_Y / 6 };
 
 game_obj_velocity initial_velocity_big_enemy_ship =
 { 0.0, BIG_ENEMY_SHIP_SPEED };

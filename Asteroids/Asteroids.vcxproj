@@ -178,13 +178,13 @@
     <ClInclude Include="data\small_asteroid_data.hpp" />
     <ClInclude Include="data\small_enemy_ship_data.hpp" />
     <ClInclude Include="headers\asteroid.hpp" />
-    <ClInclude Include="headers\game_over.hpp" />
+    <ClInclude Include="headers\high_score.hpp" />
     <ClInclude Include="headers\sounds.hpp" />
     <ClInclude Include="structs\color_obj.hpp" />
     <ClInclude Include="structs\msg.hpp" />
     <ClInclude Include="structs\pointd.hpp" />
     <ClInclude Include="headers\bullet.hpp" />
-    <ClInclude Include="data\game_control.hpp" />
+    <ClInclude Include="headers\game_control.hpp" />
     <ClInclude Include="headers\enemy_ship.hpp" />
     <ClInclude Include="headers\random_num.hpp" />
     <ClInclude Include="headers\show_remain_lives.hpp" />
@@ -201,6 +201,8 @@
     <Font Include="data\Vector_Battle.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="data\10_top _high_scores_file.txt" />
+    <Text Include="data\10_top _names_file.txt" />
     <Text Include="src\README.txt" />
   </ItemGroup>
   <ItemGroup>

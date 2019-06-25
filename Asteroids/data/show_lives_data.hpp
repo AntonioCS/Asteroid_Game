@@ -13,16 +13,16 @@ SDL_Point show_lives_ref[SHOW_LIVES_VERTEX_COUNT] = {
 };
 
 SDL_Point intial_position_show_lives[SHOW_LIVES_COUNT] = { 
-	{100, 100},
-	{130, 100},
-	{160, 100},
-	{190, 100},
-	{220, 100},
-	{250, 100},
-	{280, 100},
-	{310, 100},
-	{340, 100},
-	{370, 100}
+	{window_X / 8, window_Y / 6},
+	{30+window_X / 8, window_Y / 6},
+	{60 + window_X / 8, window_Y / 6},
+	{90 + window_X / 8, window_Y / 6},
+	{120 + window_X / 8, window_Y / 6},
+	{150 + window_X / 8, window_Y / 6},
+	{180 + window_X / 8, window_Y / 6},
+	{210 + window_X / 8, window_Y / 6},
+	{240 + window_X / 8, window_Y / 6},
+	{270 + window_X / 8, window_Y / 6}
 };
 
 bool show_show_lives[SHOW_LIVES_COUNT]{ true, true, true, false, false, false, false, false, false, false };

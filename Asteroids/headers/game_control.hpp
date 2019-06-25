@@ -10,7 +10,7 @@ public:
 	int level{0};
 	bool one_left{ true };
 	bool asteroid_too_close_to_reset_position{ false };
-	const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+	const Uint8 *keystate = SDL_GetKeyboardState(nullptr);
 	int screen_refresh_rate{ 0 }; // every xx of a second
 
 	Uint32 start_time{ 0 };

@@ -34,18 +34,21 @@ SDL_Point big_rocks_ref[BIG_ROCK_TYPE_COUNT][BIG_ROCK_VERTEX_COUNT] = {
 };
 
 SDL_Point intial_position_big_rocks[BIG_ROCK_COUNT] = {
-	{ 100, 400}, 
-	{ 500, 200 }, 
-	{ 100, 100 },
-	{ 600, 500  },
-	{ 200, 600 },
-	{ 100,100 },
+	{ window_X / 8, 3 * window_Y / 6}, //  change all these to window relative
+	{ 5 * window_X / 8 , window_Y  / 6 },
+	{ window_X / 8 , window_Y / 6},
+	{6 * window_X / 8 , 5 * window_Y / 6},
+	{2*window_X / 8 , 3 * window_Y / 6},
+	{window_X / 8 , 3 * window_Y / 6},
+
+	{2*window_X / 8 , 2 * window_Y / 6},
 	{ 150,150 },
-	{ 200, 200 },
+	
 	{ 250, 250 },
-	{ 300,300 },
+
+	{3 * window_X / 8 , 3 * window_Y / 6},
 	{ 550,550 },
-	{ 600 , 500 }
+    {3*window_X / 4 , 5 * window_Y / 8},
 };
 
 game_obj_velocity initial_velocity_big_rocks[BIG_ROCK_COUNT] = {

@@ -4,8 +4,8 @@
 
 #include "sounds.hpp"
 
-constexpr auto window_X = 800;
-constexpr auto window_Y = 600;
+constexpr auto window_X = 2 * 1920 / 3;
+constexpr auto window_Y = 2* 1080 / 3;
 
 class window {
 public:

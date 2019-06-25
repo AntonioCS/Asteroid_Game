@@ -78,6 +78,11 @@ public:
 	Mix_Chunk *game_heart_beat = nullptr;
 	Mix_Chunk *saucer_big = nullptr;
 	Mix_Chunk *saucer_small = nullptr;
+
+	int beat_count{ 0 };
+	int big_saucer_count{ 0 };
+	int small_saucer_count{ 0 };
+
 }; 
 
 

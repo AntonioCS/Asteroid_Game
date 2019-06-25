@@ -14,16 +14,16 @@ public:
 	{
 		font = TTF_OpenFont(font_path.c_str(), font_size);
 		if (!font) {
-			std::cerr << "Failed to load font.\n";
+			std::cerr << "Failed to load general message font.\n";
 		}
 		auto win_surface = TTF_RenderText_Solid(font, show_win.c_str(), msg_color);
 
 		if (!win_surface) {
-			std::cerr << "Failed to create score surface.\n";
+			std::cerr << "Failed to create general message surface.\n";
 		}
 		auto win_texture = SDL_CreateTextureFromSurface(renderer, win_surface);
 		if (!win_texture) {
-			std::cerr << "Failed to create score texture.\n";
+			std::cerr << "Failed to create general message texture.\n";
 		}
 		SDL_FreeSurface(win_surface);
 		return win_texture;
