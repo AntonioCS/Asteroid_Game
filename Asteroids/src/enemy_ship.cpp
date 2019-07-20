@@ -8,11 +8,12 @@ constexpr auto PI = 3.14159265359;
 int enemy_ship::delay = ENEMY_SHIP_FIRE_DELAY; 
 int const enemy_ship::fire_border{ SMALL_ENEMY_SHIP_FIRE_BORDER };
 
-enemy_ship::enemy_ship(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off, const int &_score, const double &_scale)
+enemy_ship::enemy_ship(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off, const int &_score, const double &_scale, const int &_visit_interval)
 	:
 	game_obj(_vertices, _num_pts, _position, _av, _on_off),
 	score{ _score },
-	scale{ _scale }
+	scale{ _scale }, 
+	visit_interval{_visit_interval }
 {
 	scale_game_object_data(big_enemy_ship_ref, SCALE_BIG_ENEMY_SHIP);
 	scale_game_object_data(small_enemy_ship_ref, SCALE_SMALL_ENEMY_SHIP);
@@ -60,11 +61,11 @@ bool enemy_ship::check_enemy_ship_bullet_hit(player_bullet_list &bullets, const 
 }
 
 big_enemy_ship_construct::big_enemy_ship_construct() {
-	visit_interval = BIG_ENEMY_SHIP_TIMING;
+
 };
-enemy_ship big_enemy_ship_construct::ship(big_enemy_ship_ref, BIG_ENEMY_SHIP_VERTEX_COUNT, intial_position_big_enemy_ship, initial_velocity_big_enemy_ship, show_big_enemy_ship, BIG_ENEMY_SHIP_SCORE, SCALE_BIG_ENEMY_SHIP);
+enemy_ship big_enemy_ship_construct::ship(big_enemy_ship_ref, BIG_ENEMY_SHIP_VERTEX_COUNT, intial_position_big_enemy_ship, initial_velocity_big_enemy_ship, show_big_enemy_ship, BIG_ENEMY_SHIP_SCORE, SCALE_BIG_ENEMY_SHIP, BIG_ENEMY_SHIP_TIMING);
 
 small_enemy_ship_construct::small_enemy_ship_construct() {
-	visit_interval = SMALL_ENEMY_SHIP_TIMING;
+
 };
-enemy_ship small_enemy_ship_construct::ship(small_enemy_ship_ref, SMALL_ENEMY_SHIP_VERTEX_COUNT, intial_position_small_enemy_ship, initial_velocity_small_enemy_ship, show_small_enemy_ship, SMALL_ENEMY_SHIP_SCORE, SCALE_SMALL_ENEMY_SHIP);
+enemy_ship small_enemy_ship_construct::ship(small_enemy_ship_ref, SMALL_ENEMY_SHIP_VERTEX_COUNT, intial_position_small_enemy_ship, initial_velocity_small_enemy_ship, show_small_enemy_ship, SMALL_ENEMY_SHIP_SCORE, SCALE_SMALL_ENEMY_SHIP, SMALL_ENEMY_SHIP_TIMING);

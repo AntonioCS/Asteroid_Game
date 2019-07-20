@@ -2,8 +2,6 @@
 #include<string>
 #include<SDL.h>
 
-#include "sounds.hpp"
-
 constexpr auto window_X = 2 * 1920 / 3;
 constexpr auto window_Y = 2* 1080 / 3;
 
@@ -21,7 +19,6 @@ public:
 private:
 	bool init();
 
-private:
 	std::string title;
 	int width{ window_X };
 	int height{ window_Y };

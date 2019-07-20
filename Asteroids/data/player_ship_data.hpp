@@ -20,16 +20,11 @@ SDL_Point player_space_ship_ref[TOTAL_SHIP_VERTEX_COUNT] = {
 	{32, 0},{-16, 18},{-10, 0},{-16, -18}, {32, 0},{-18,12}, {-32, 0}, {-18, -12}
 };  // main ship dynamic vertices position
 
-
-SDL_Point player_ship_thrust[PLAYER_SHIP_THRUST_VERTEX_COUNT] = {
-	{-18,12}, {-32, 0}, {-18, -12} // thrust triangle vertices for drawing
-};
-
 SDL_Point intial_position_ship = { (window_X/2) / SCALE_PLAYER_SHIP , (window_Y/2) / SCALE_PLAYER_SHIP };
 
 game_obj_velocity initial_velocity_ship = { 0.0, 0.0 };
 
-SDL_Point space_ship[TOTAL_SHIP_VERTEX_COUNT];
+//SDL_Point space_ship[TOTAL_SHIP_VERTEX_COUNT];
 
 constexpr auto START_LIVES_NUM = 3;
 constexpr auto SCORE_FOR_EXTRA_SHIP = 10000;

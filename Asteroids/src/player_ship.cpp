@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "player_ship.hpp"
 
 #include "player_ship_data.hpp" // player ship reference data
@@ -78,18 +80,13 @@ void player_ship::rotate_right() {
 }
 
 void player_ship::thrust() {
-	av_vel_old = av.velocity;
 	motion_orientation_delta_angle = ship_orientation - av.angle;
 	cos_a = cos(motion_orientation_delta_angle);
 	sin_a = sin(motion_orientation_delta_angle);
-	// vector thrust and reorientate. review this and see if you can incorporate momentum etc..
 	av.velocity += cos_a * ship_specification.thrust;
 	sideways_velocity = sin_a * ship_specification.thrust;
-	// limit maximum speed
 	av.velocity = std::max(-ship_specification.velocity_limit, std::min(av.velocity, ship_specification.velocity_limit));
-	if (av.velocity != av_vel_old) {
-		av.angle += tan(sideways_velocity / av.velocity);
-	}
+	av.angle += tan(sideways_velocity / av.velocity);
 }
 
 void player_ship::reset_pos() {

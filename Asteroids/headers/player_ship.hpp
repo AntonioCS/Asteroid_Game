@@ -23,7 +23,6 @@ struct explode_shape {
 class player_ship : public game_obj
 {
 public:
-	//player_ship() = default; dn't need  default constructor meaningless
 	player_ship(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, const double &_scale);
 	~player_ship() = default;
 

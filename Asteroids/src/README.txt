@@ -20,3 +20,6 @@ Things still to do (in no particular order):
 3. Add high score record list, display and user input
 4. Increase beat frequency as game continues
 5. automatic window and game scaling
+6. Add hyperspace
+7. Look at using very large scaled screen to avoid casing from double to int when moving objects and drawing to screen
+8. Review useing std::array rather than raw arrays for object data compilation

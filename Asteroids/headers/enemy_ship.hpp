@@ -9,7 +9,7 @@
 class enemy_ship : public game_obj
 {
 public:
-	enemy_ship(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off, const int &_score, const double &_scale);
+	enemy_ship(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off, const int &_score, const double &_scale, const int &_visit_interval);
 	~enemy_ship() = default;
 
 	// launch enemy ship from either side of the screeen at a random angle
@@ -23,6 +23,7 @@ public:
 	Uint32 start_time{ 0 };
 	static int delay;
 	static const int fire_border;
+	int visit_interval;
 
 private:
 	int x{ -100 };
@@ -35,7 +36,6 @@ public:
 	big_enemy_ship_construct();
 	~big_enemy_ship_construct() = default;
 	static enemy_ship ship;
-	int visit_interval;
 };
 
 class small_enemy_ship_construct {
@@ -43,7 +43,6 @@ public:
 	small_enemy_ship_construct();
 	~small_enemy_ship_construct() = default;
 	static enemy_ship ship;
-	int visit_interval;
 };
 
 	

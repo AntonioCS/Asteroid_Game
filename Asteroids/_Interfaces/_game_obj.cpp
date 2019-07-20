@@ -5,6 +5,19 @@
 
 RGB color;
 
+game_obj::game_obj(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off) :
+	vertices{ _vertices }, // actual local vertex coordinates defining sape of object
+	num_pts{ _num_pts }, // number of vertices
+	position{ _position }, // initial position
+	av{ _av }, // velocity vector of object
+	on_off{ _on_off } // can we see the object on the screen
+{
+	for (int i = 0; i < num_pts; ++i) { // set the game object vertices in the correct position
+		vertices[i].x += position.x;
+		vertices[i].y += position.y;
+	}
+}
+
 void game_obj::draw() const {
 	SDL_SetRenderDrawColor(window::renderer, color.r, color.b, color.g, color.a);
 	SDL_RenderDrawLines(window::renderer, vertices, num_pts);
@@ -20,19 +33,6 @@ int game_obj::rand_saucer_start_y() const {
 
 double game_obj::rand_nudge_angle() const {
 	return RAND_0_to_1(gen);
-}
-
-game_obj::game_obj(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off) :
-	vertices{ _vertices }, // actual local vertex coordinates defining sape of object
-	num_pts{ _num_pts }, // number of vertices
-	position{ _position }, // initial position
-	av{ _av }, // velocity vector of object
-	on_off{ _on_off } // can we see the object on the screen
-{
-	for (int i = 0; i < num_pts; ++i) { // set the game object vertices in he correct position
-		vertices[i].x += position.x;
-		vertices[i].y += position.y;
-	}
 }
 
 void game_obj::check_boundaries() const {
@@ -74,7 +74,7 @@ void game_obj::move() {
 	}
 	);
 
-	// calculatee  the objects centre
+	// calculate  the objects centre
 	obj_centre = { (game_obj_box.x_max + game_obj_box.x_min) / 2.0, (game_obj_box.y_max + game_obj_box.y_min) / 2.0 };
 
 	game_obj::check_boundaries();
@@ -146,9 +146,3 @@ void game_obj::obj_explosion() {
 	}
 }
 
-/*void game_obj::thick_line() {
-	for (auto i = 0; i < num_pts; ++i) {
-		vertices_line_above[i].y = vertices[i].y - 1;
-		vertices_line_below[i].y = vertices[i].y + 1;
-	}
-}*/

@@ -26,7 +26,7 @@ class game_obj
 public:
 	game_obj(SDL_Point *_vertices, const int &_num_pts, const SDL_Point &_position, game_obj_velocity _av, bool _on_off);
 
-	~game_obj() = default; // double check with the experts whether i need to write deconstructor and how for mutiple asteroids in a vector
+	~game_obj() = default;
 
 private:
 	// has the obect moved off the screen, if so wrap around
@@ -35,8 +35,8 @@ private:
 public:
 	virtual void draw() const;
 
-	// adjust size of all the main game elments to make realstic looking game
-// use of template allows for object and scale to be used together, othwise get type incompatible error
+// adjust size of all the main game elements to make realistic looking game
+// use of template allows for object and scale to be used together, otherwise get type incompatible error
 	template<typename T, std::size_t vertex_num>
 	void scale_game_object_data(T(&object_ref_data)[vertex_num], const double scale) {
 		for (int j = 0; j < vertex_num; ++j) {
@@ -69,8 +69,6 @@ public:
 
 	int num_pts{};
 	SDL_Point *vertices;
-	//SDL_Point *vertices_line_above; 
-	//SDL_Point *vertices_line_below;
 	SDL_Point position;
 	game_obj_velocity av;
 	bool on_off{ false };

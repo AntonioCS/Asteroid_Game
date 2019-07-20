@@ -28,8 +28,8 @@ int main(int argc, char *argv[]) {
 	SDL_Color player_color;
 	window asteroid_window("Asteroids", window_X, window_Y);
 	
-	all_asteroids all_asteroids_active; // build a dynmoc array to show all rocks during the game
-	std::vector<SDL_Point> original;
+	all_asteroids all_asteroids_active; // build a dynamic array to show all rocks during the game
+	std::vector<SDL_Point> original;  // copy dynamic array and store all original positions etc.. for gam / level reset / restart
 	
 	for (auto i = 0; i < 84; ++i) {
 		for (auto j = 0; j < 12; ++j) {
@@ -72,13 +72,13 @@ int main(int argc, char *argv[]) {
 		
 		// Make sure Game run at the correct screen refresh Rate, asumed 60Hz for game speed
 		game.start_time = SDL_GetTicks();
-		if (game.start_time > game.end_time + game.screen_refresh_rate) {
+		if (game.start_time >= game.end_time + game.screen_refresh_rate) {
 			game.end_time = game.start_time;
 
 			sounds.beat_count > 50 ? Mix_PlayChannel(-1, sounds.game_heart_beat, 0), sounds.beat_count = 0 : ++sounds.beat_count;
 
 			// Clear keyboard buffer and get new keyboard sample
-			SDL_PumpEvents();
+			//SDL_PumpEvents();
 			asteroid_window.poll_all_events(game.keystate);
 
 			if (player.ship.earn_life()) Mix_PlayChannel(-1, sounds.extra_ship, 0);
@@ -167,11 +167,13 @@ int main(int argc, char *argv[]) {
 
 			// check whether the small saucer has shot the player
 			for (int i = 0; i < enemy_bullets.list.size(); ++i) {
-				if (player.ship.collider({ static_cast <int>(enemy_bullets.list[i].position.x), static_cast <int>(enemy_bullets.list[i].position.y) }) && player.ship.on_off) {
-					//	std::cout << "small saucer shot player ship\n";
-					player.ship.got_hit();
-					Mix_PlayChannel(-1, sounds.ship_explode, 0);
-					player_bullets.all_bullets_off();
+				if (enemy_bullets.list[i].on_off) {
+					if (player.ship.collider({ static_cast <int>(enemy_bullets.list[i].position.x), static_cast <int>(enemy_bullets.list[i].position.y) }) && player.ship.on_off) {
+						//	std::cout << "small saucer shot player ship\n";
+						player.ship.got_hit();
+						Mix_PlayChannel(-1, sounds.ship_explode, 0);
+						player_bullets.all_bullets_off();
+					}
 				}
 			}
 
@@ -192,7 +194,7 @@ int main(int argc, char *argv[]) {
 			}
 
 			// check timing interval and launch big saucer when required and then check for player bullet impacts as it flys around screen
-			if (game.start_time > big_enemy.ship.start_time + big_enemy.visit_interval) {
+			if (game.start_time > big_enemy.ship.start_time + big_enemy.ship.visit_interval) {
 				big_enemy.ship.check_launch_enemy_ship();
 			}
 			if (big_enemy.ship.on_off) {
@@ -210,7 +212,7 @@ int main(int argc, char *argv[]) {
 			big_enemy.ship.obj_explosion();
 
 			// check timing interval and launch small saucer when required and then check for player bullet impacts as it flys around screen
-			if (game.start_time > small_enemy.ship.start_time + small_enemy.visit_interval) {
+			if (game.start_time > small_enemy.ship.start_time + small_enemy.ship.visit_interval) {
 				small_enemy.ship.check_launch_enemy_ship();
 			}
 			if (small_enemy.ship.on_off) {
@@ -290,11 +292,13 @@ int main(int argc, char *argv[]) {
 					Mix_PlayChannel(-1, sounds.ship_thrust, 0);
 				}
 				if (!game.keystate[SDL_SCANCODE_UP]) { player.ship.show_thrust = false; }
+
+
 				if (game.keystate[SDL_SCANCODE_Z]) { player.ship.hyperspace(); }
 
 				if (game.keystate[SDL_SCANCODE_SPACE] && asteroid_window.space_key_release) {
 					asteroid_window.space_key_release = false;
-					for (auto i = 0; i < enemy_bullets.list.size(); ++i) {
+					for (auto i = 0; i < player_bullets.list.size(); ++i) {
 						if (!player_bullets.list[i].on_off) {
 							Mix_PlayChannel(-1, sounds.ship_shoot, 0);
 							player_bullets.list[i].fire(player.ship.vertices[0], player.ship.ship_orientation);
@@ -303,7 +307,7 @@ int main(int argc, char *argv[]) {
 					}
 				}
 			}
-			// make sur eplyer has to pres space everytime they want to fire a bullet, no automaticl firing
+			// make sure player has to press space everytime they want to fire a bullet, no automatic firing
 			if (!game.keystate[SDL_SCANCODE_SPACE]) asteroid_window.space_key_release = true;
 
 			// shot all the rocks, go up a level, increase the number of initial big asteroids and start again
