@@ -52,6 +52,8 @@ public:
 
 	double rand_nudge_angle() const;
 
+	pointd hyper_space_coords() const;
+
 	// obvious
 	void move();
 

@@ -1,7 +1,6 @@
 #include <iostream>
 
 #include "player_ship.hpp"
-
 #include "player_ship_data.hpp" // player ship reference data
 
 // ship specification
@@ -20,6 +19,7 @@ int const player_ship::max_lives{ MAX_LIVES_NUM };
 bool player_ship::show_thrust{ false };
 bool player_ship::reset{ false };
 int player_ship::extra_ship{ SCORE_FOR_EXTRA_SHIP };
+int player_ship::hyperspace_num{ NUM_HPERSPACE };
 
 
 pointd player_ship::thrust_force{ 0.0,0.0 };
@@ -104,7 +104,14 @@ void player_ship::reset_pos() {
 
 
 void player_ship::hyperspace() {
-	// to be done
+	std::cout << "hyper space pressed\n";
+	int X = hyper_space_coords().x;
+	int Y = hyper_space_coords().y;
+	for (auto i = 0; i < num_pts; ++i) {
+		// centre back on screen
+		vertices[i].x = X + player_space_ship[i].x;
+		vertices[i].y = Y + player_space_ship[i].y;
+	}
 }
 
 void player_ship::got_hit() {

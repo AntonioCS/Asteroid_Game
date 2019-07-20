@@ -22,6 +22,7 @@ public:
 	Uint32 new_level_delay = 2 * 1000;
 	bool new_level_chk{true};
 	bool game_over{ false };
+	double heart_rate_inc{ 0 };
 
 	void game_reset() {
 		new_level_chk = true;

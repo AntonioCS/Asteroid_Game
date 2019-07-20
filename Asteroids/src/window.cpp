@@ -7,7 +7,6 @@
 
 SDL_Renderer *window::renderer = nullptr;
 
-
 window::window(const std::string &_title, int _width, int _height) :
 	title{ _title },
 	width{ _width },

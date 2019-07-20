@@ -13,7 +13,8 @@ constexpr auto SCALE_PLAYER_SHIP = 0.5;
 constexpr auto PLAYER_SHIP_VERTEX_COUNT = 5;
 constexpr auto PLAYER_SHIP_THRUST_VERTEX_COUNT = 3;
 constexpr auto TOTAL_SHIP_VERTEX_COUNT = PLAYER_SHIP_VERTEX_COUNT + PLAYER_SHIP_THRUST_VERTEX_COUNT;
-
+constexpr auto NUM_HPERSPACE = 3;
+ 
 SDL_Point player_space_ship[TOTAL_SHIP_VERTEX_COUNT] = { {32, 0},{-16, 18},{-10, 0},{-16, -18}, {32, 0},{-18,12}, {-32, 0}, {-18, -12} };  // main ship static vertices position
 
 SDL_Point player_space_ship_ref[TOTAL_SHIP_VERTEX_COUNT] = {

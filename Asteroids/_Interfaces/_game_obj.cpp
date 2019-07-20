@@ -35,6 +35,10 @@ double game_obj::rand_nudge_angle() const {
 	return RAND_0_to_1(gen);
 }
 
+pointd game_obj::hyper_space_coords() const {
+	return { hyper_space_X(gen), hyper_space_X(gen) };
+}
+
 void game_obj::check_boundaries() const {
 
 	if (game_obj_box.x_min >= window_X) {

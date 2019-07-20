@@ -48,6 +48,7 @@ public:
 	static const int max_lives;
 	static bool reset;
 	static int extra_ship;
+	static int hyperspace_num;
 	
 private:
 	double av_vel_old;

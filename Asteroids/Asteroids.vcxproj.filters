@@ -59,5 +59,8 @@
     <Media Include="sounds\ship_explode.wav" />
     <Media Include="sounds\ship_shoot.wav" />
     <Media Include="sounds\ship_thrust.wav" />
+    <Media Include="C:\Users\Jon\Downloads\87047__runnerpack__woosh.wav" />
+    <Media Include="C:\Users\Jon\Downloads\hyperspace.wav" />
+    <Media Include="sounds\hyperspace.wav" />
   </ItemGroup>
 </Project>

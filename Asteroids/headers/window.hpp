@@ -29,4 +29,5 @@ private:
 public:
 	static SDL_Renderer *renderer;
 	bool space_key_release{ false };
+	bool hyperspace_key_release{ false };
 };

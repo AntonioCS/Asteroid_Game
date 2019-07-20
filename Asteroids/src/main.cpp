@@ -75,7 +75,9 @@ int main(int argc, char *argv[]) {
 		if (game.start_time >= game.end_time + game.screen_refresh_rate) {
 			game.end_time = game.start_time;
 
-			sounds.beat_count > 50 ? Mix_PlayChannel(-1, sounds.game_heart_beat, 0), sounds.beat_count = 0 : ++sounds.beat_count;
+
+			sounds.beat_count > 50 * (1.0 - game.heart_rate_inc) ? Mix_PlayChannel(-1, sounds.game_heart_beat, 0), sounds.beat_count = 0 : ++sounds.beat_count;
+			game.heart_rate_inc < 0.3 ? game.heart_rate_inc += 1/(60.0*10*10) : game.heart_rate_inc; // increase beat by 1/100 sec every 10 seconds
 
 			// Clear keyboard buffer and get new keyboard sample
 			//SDL_PumpEvents();
@@ -294,7 +296,16 @@ int main(int argc, char *argv[]) {
 				if (!game.keystate[SDL_SCANCODE_UP]) { player.ship.show_thrust = false; }
 
 
-				if (game.keystate[SDL_SCANCODE_Z]) { player.ship.hyperspace(); }
+				if (game.keystate[SDL_SCANCODE_Z] && asteroid_window.hyperspace_key_release && player.ship.hyperspace_num > 0) {
+					std::cout << std::boolalpha << game.keystate[SDL_SCANCODE_Z] << ", " << asteroid_window.hyperspace_key_release << "\n";
+					asteroid_window.hyperspace_key_release = false;
+					--player.ship.hyperspace_num;
+					Mix_PlayChannel(-1, sounds.hyperspace, 0);
+					player.ship.hyperspace(); 
+				}
+				// make sure player can only hyperspace once per button press
+				if (!game.keystate[SDL_SCANCODE_Z]) asteroid_window.hyperspace_key_release = true;
+				
 
 				if (game.keystate[SDL_SCANCODE_SPACE] && asteroid_window.space_key_release) {
 					asteroid_window.space_key_release = false;
@@ -316,6 +327,7 @@ int main(int argc, char *argv[]) {
 				if (game.level_new_time < game.level_start_time + game.new_level_delay) {
 					game.level_new_time = SDL_GetTicks();
 					level_num.display(window_X / 2, window_Y / 2, window::renderer);
+					game.heart_rate_inc = 0;
 				}
 				else {
 					++game.level;
