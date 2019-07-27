@@ -105,10 +105,14 @@ void player_ship::reset_pos() {
 void player_ship::hyperspace() {
 	int X = hyper_space_coords().x;
 	int Y = hyper_space_coords().y;
+	get_centre_rotation();
 	for (auto i = 0; i < num_pts; ++i) {
-		// centre back on screen
-		vertices[i].x = X + player_space_ship[i].x;
-		vertices[i].y = Y + player_space_ship[i].y;
+		// bring back to origin
+		vertices[i].x -= sc.x;
+		vertices[i].y -= sc.y;
+		// then randomly reposition fro hyerspace
+		vertices[i].x += X;
+		vertices[i].y += Y;
 	}
 }
 
