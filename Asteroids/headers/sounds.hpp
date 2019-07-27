@@ -35,6 +35,10 @@ public:
 
 		saucer_small = Mix_LoadWAV("sounds/saucer_small.wav");
 		if (saucer_small == nullptr) std::cout << "saucer_small sound failed to load\n";
+
+		hyperspace = Mix_LoadWAV("sounds/hyperspace.wav");
+		if (saucer_small == nullptr) std::cout << "hyerspace sound failed to load\n";
+
 	}
 	~sounds() {
 		Mix_FreeChunk(ship_shoot);
@@ -66,6 +70,9 @@ public:
 
 		Mix_FreeChunk(saucer_small);
 		saucer_small = nullptr;
+
+		Mix_FreeChunk(hyperspace);
+		hyperspace = nullptr;
 	};
 
 	Mix_Chunk *ship_shoot = nullptr;
@@ -78,6 +85,7 @@ public:
 	Mix_Chunk *game_heart_beat = nullptr;
 	Mix_Chunk *saucer_big = nullptr;
 	Mix_Chunk *saucer_small = nullptr;
+	Mix_Chunk *hyperspace = nullptr;
 
 	int beat_count{ 0 };
 	int big_saucer_count{ 0 };

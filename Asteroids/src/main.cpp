@@ -61,7 +61,9 @@ int main(int argc, char *argv[]) {
 	text_message level_num(window::renderer, msg.font, msg.score_font_size, "NEW LEVEL", player_color);
 	text_message high_score_title(window::renderer, msg.font, msg.score_font_size, "HIGH SCORES", player_color);
 
-	score score(window::renderer, msg.font, msg.score_font_size, std::to_string(player.ship.score), player_color);
+	score score_count(window::renderer, msg.font, msg.score_font_size, std::to_string(player.ship.score), player_color);
+
+	score hyperspace_count(window::renderer, msg.font, msg.score_font_size, std::to_string(player.ship.hyperspace_num), player_color);
 
 	control game;
 	
@@ -83,10 +85,15 @@ int main(int argc, char *argv[]) {
 			//SDL_PumpEvents();
 			asteroid_window.poll_all_events(game.keystate);
 
-			if (player.ship.earn_life()) Mix_PlayChannel(-1, sounds.extra_ship, 0);
+			if (player.ship.earn_life()) {
+				Mix_PlayChannel(-1, sounds.extra_ship, 0);
+				++player.ship.hyperspace_num;
+			}
+
 
 			// Display score and Atari title
-			score.display(window_X / 8, window_Y / 10, window::renderer, std::to_string(player.ship.score), msg.score_font_size);
+			score_count.display(window_X / 8, window_Y / 10, window::renderer, std::to_string(player.ship.score), msg.score_font_size);
+			hyperspace_count.display(window_X / 2, window_Y / 10, window::renderer, std::to_string(player.ship.hyperspace_num), msg.score_font_size);
 			title_message.display(window_X / 2.5, window_Y / 1.2, window::renderer);
 
 			game.asteroid_too_close_to_reset_position = false; // reset ateroid reposition flag

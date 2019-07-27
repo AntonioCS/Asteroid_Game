@@ -99,12 +99,10 @@ void player_ship::reset_pos() {
 	av.velocity = 0;
 	ship_orientation = 0.0;
 	on_off = true;
-	//std::cout << "Reset Ship\n";
 }
 
 
 void player_ship::hyperspace() {
-	std::cout << "hyper space pressed\n";
 	int X = hyper_space_coords().x;
 	int Y = hyper_space_coords().y;
 	for (auto i = 0; i < num_pts; ++i) {
