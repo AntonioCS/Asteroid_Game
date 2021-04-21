@@ -1,0 +1,22 @@
+{
+  "name": "asteroidsgame",
+  "version-string": "0.1.0-dev",
+  "homepage": "",
+  "description": "",
+  "dependencies": [
+    "sdl2",
+    {
+      "name": "sdl2-image",
+      "features": [ "libjpeg-turbo", "libwebp", "tiff" ]
+    },
+    "sdl2-ttf",
+    "sdl2-mixer",
+    "sdl2-net",
+    "sdl2-gfx",
+    "spdlog",
+    {
+      "name": "imgui",
+      "features": [ "sdl2-binding" ]
+    }
+  ]
+}
