@@ -1,6 +1,6 @@
 #pragma once
 #include<string>
-#include<SDL.h>
+#include <SDL2/SDL.h>
 
 constexpr auto window_X = 2 * 1920 / 3;
 constexpr auto window_Y = 2* 1080 / 3;
